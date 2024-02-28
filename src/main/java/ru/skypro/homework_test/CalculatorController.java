@@ -21,7 +21,7 @@ public class CalculatorController {
         return "Добро пожаловать в калькулятор";
     }
 
-    @RequestMapping(path = "/plus")
+    @GetMapping(path = "/plus")
     public ResponseEntity<String> plus(@RequestParam Integer num1, @RequestParam Integer num2) {
         if (num1 == null || num2 == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка: необходимо указать оба числа");
@@ -29,7 +29,7 @@ public class CalculatorController {
         int result = calculatorService.plus(num1, num2);
             return ResponseEntity.ok(num1 + " + " + num2 + " = " + result);
     }
-    @RequestMapping(path = "/minus")
+    @GetMapping(path = "/minus")
             public ResponseEntity<String> minus(@RequestParam Integer num1, @RequestParam Integer num2) {
         if (num1 == null || num2 == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка: необходимо указать оба числа");

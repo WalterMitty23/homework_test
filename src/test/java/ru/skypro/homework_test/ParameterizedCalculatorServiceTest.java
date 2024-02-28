@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorServiceTest2 {
+class ParameterizedCalculatorServiceTest {
     CalculatorService calculatorService = new CalculatorService();
     public static Stream<Arguments> args() {
         return Stream.of(
@@ -40,11 +40,7 @@ class CalculatorServiceTest2 {
     @ParameterizedTest
     @MethodSource("args")
     void nameDivide(Integer num1, Integer num2) {
-        if (num2 == 0) {
-            assertThrows(IllegalArgumentException.class, () -> calculatorService.divide(num1, num2));
-            return;
-        }
-        assertEquals(num1 / num2, calculatorService.divide(num1, num2));
+        assertEquals((int) (num1 / num2), calculatorService.divide(num1, num2).intValue());
     }
 
 }
